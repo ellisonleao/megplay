@@ -6,6 +6,7 @@ var stage = new Kinetic.Stage({
 });
 
 var layer = new Kinetic.Layer();  
+
 var rectX = stage.getWidth() / 2 - 50;
 var rectY = stage.getHeight() / 2 - 25;
 
