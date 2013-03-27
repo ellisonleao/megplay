@@ -35,12 +35,12 @@ var box2 = new Kinetic.Rect({
 // drag and drop
 var boxes = [box, box2];
 
-boxes.forEach(function(box) {
-  box.on('mouseover', function() {
+for(var i = 0; i < boxes.length; i++) {
+  boxes[i].on('mouseover', function() {
     document.body.style.cursor = 'pointer';
   });
-
-  layer.add(box);
-});
+  
+  layer.add(boxes[i]);
+}
 
 stage.add(layer);
