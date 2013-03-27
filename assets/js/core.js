@@ -33,21 +33,14 @@ var box2 = new Kinetic.Rect({
 });
 
 // drag and drop
-box.on('mouseover', function() {
-  document.body.style.cursor = 'pointer';
-});
-box.on('mouseout', function() {
-  document.body.style.cursor = 'default';
-});
+var boxes = [box, box2];
 
-box2.on('mouseover', function() {
-  document.body.style.cursor = 'pointer';
-});
-box2.on('mouseout', function() {
-  document.body.style.cursor = 'default';
-});
+boxes.forEach(function(box) {
+  box.on('mouseover', function() {
+    document.body.style.cursor = 'pointer';
+  });
 
-layer.add(box);
-layer.add(box2);
+  layer.add(box);
+});
 
 stage.add(layer);
