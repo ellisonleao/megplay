@@ -1,9 +1,8 @@
 // core file
-
 var stage = new Kinetic.Stage({
   container: 'container',
-  width: 960,
-  height: 400
+  width: window.innerWidth,
+  height: window.innerHeight
 });
 
 var layer = new Kinetic.Layer();  
