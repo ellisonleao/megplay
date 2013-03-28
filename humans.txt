@@ -1,0 +1,16 @@
+# humanstxt.org/
+# The humans responsible & technology colophon
+
+# TEAM
+
+    Ellison Leão -- Developer -- @ellisonleao
+    William Oliveira -- Developer -- @gnuwiliam
+
+# THANKS
+
+    Domingos Leão -- Idea man behind the project
+
+# TECHNOLOGY COLOPHON
+
+    HTML5, CSS3
+    Normalize.css, jQuery, Modernizr
