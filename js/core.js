@@ -18,7 +18,8 @@ var box = new Kinetic.Rect({
   fill: 'yellow',
   stroke: 'black',
   strokeWidth: 4,
-  draggable: true
+  draggable: true,
+  fillText: "text"
 });
 
 var box2 = new Kinetic.Rect({
@@ -29,7 +30,8 @@ var box2 = new Kinetic.Rect({
   fill: 'yellow',
   stroke: 'black',
   strokeWidth: 4,
-  draggable: true
+  draggable: true,
+  fillText: "text"
 });
 
 // drag and drop
