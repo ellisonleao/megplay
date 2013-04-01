@@ -1,39 +1,11 @@
 // core file
 var stage = new Kinetic.Stage({
   container: 'container',
-  width: 800,
-  height: 600
+  width: window.innerWidth,
+  height: window.innerHeight
 });
 
 var layer = new Kinetic.Layer();  
-
-var rectX = stage.getWidth() / 2 - 50;
-var rectY = stage.getHeight() / 2 - 25;
-
-var box = new Kinetic.Rect({
-  x: rectX,
-  y: rectY,
-  width: 220,
-  height: 90,
-  fill: 'yellow',
-  stroke: 'black',
-  strokeWidth: 4,
-  draggable: true,
-  fillText: "text"
-});
-
-var box2 = new Kinetic.Rect({
-  x: rectX + 240,
-  y: rectY,
-  width: 220,
-  height: 90,
-  fill: 'yellow',
-  stroke: 'black',
-  strokeWidth: 4,
-  draggable: true,
-  fillText: "text"
-});
-
 /* TODO: Separar as funcoes em outro arquivo */
 function loadImages(sources, callback) {
   var images = {};
@@ -58,15 +30,21 @@ function draw(images){
   for(var image in images){
     var _posX = Math.floor(Math.random() * stage.getWidth()) + 324; // largura da img
     var _posY = stage.getHeight() - 168; //TODO: alterar pela altura da img
-    pol = new Kinetic.RegularPolygon({
-      sides: 4,
+    var img = new Kinetic.Image({
       x: _posX,
       y: _posY,
+      image: images[image],
       draggable: true,
-      fillPatternImage: images[image], 
     });
-    console.log(pol);
-    layer.add(pol);
+    img.setDraggable(true);
+    img.on('mouseover', function(){
+      document.body.style.cursor = 'pointer';
+    });
+    img.on('mouseout', function(){
+      document.body.style.cursor = 'default';
+    });
+    layer.add(img);
+    stage.add(layer);
   }
 }
 
@@ -84,7 +62,6 @@ var sources = {
 loadImages(sources, function(images) {
   draw(images);
 });
-
 /*
 var boxes = [box, box2];
 for(var i = 0; i < boxes.length; i++) {
@@ -95,4 +72,3 @@ for(var i = 0; i < boxes.length; i++) {
   layer.add(boxes[i]);
 }
 */
-stage.add(layer);
