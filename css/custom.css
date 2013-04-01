@@ -144,7 +144,6 @@ body.index{
 #container{
   border: 6px solid #444;
   background: #fff;
-  border-radius: 5%;
   margin: 0 auto;
   -webkit-box-shadow: inset rgba(255,254,255,0.4) 0 0.3em .3em, inset rgba(0,0,0,0.1) 0 -0.1em .3em, /* inner shadow */ 
               rgba(0,0,0,0.3) 0 .1em 1px, /* border */
