@@ -63,8 +63,10 @@ function collided(postIt) {
       if (!postIt.getX() - postIt.getWidth() >= bandAids[i].getX() + bandAids[i].getWidth()  &&
           !postIt.getY() - postIt.getHeight() >= bandAids[i].getY() + bandAids[i].getHeight() &&
           !postIt.getX() + postIt.getWidth()  <= bandAids[i].getX() + bandAids[i].getWidth() &&
-          !postIt.getX() + postIt.getHeight() <= bandAids[i].getY() - bandAids[i].getHeight() )
+          !postIt.getX() + postIt.getHeight() <= bandAids[i].getY() - bandAids[i].getHeight() ){
           collided = true;
+          break;
+      }
     }
     return collided;
 }
