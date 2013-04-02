@@ -4,8 +4,8 @@ var stage = new Kinetic.Stage({
   width: window.innerWidth,
   height: 400 
 });
-
 var layer = new Kinetic.Layer();  
+var bandAids = [];
 /* TODO: Separar as funcoes em outro arquivo */
 Number.prototype.clamp = function(min, max) {
   return Math.min(Math.max(this, min), max);
@@ -29,11 +29,11 @@ function loadImages(sources, callback) {
   }
 }
 
-
-function bandAids(){
+function generateBandAids(){
   var quantity = 8;
   var padding = 40;
   var img = new Image();
+
   img.src = 'img/bandaid.png';
   img.onload = function(){
     for (var i = 0; i < quantity; i++){
@@ -50,12 +50,23 @@ function bandAids(){
       })
       layer.add(bandAid);
       stage.add(layer);
+      bandAids.push(bandAid);
     }
-    //listener
-    bandAid.on('', function(){
-      console.log('entrou');
-    })
   }
+}
+
+
+function collided(postIt) {
+    var bLength = bandAids.length;
+    var collided = false;
+    for (var i = 0 ; i < bLength; i++){
+      if (!postIt.getX() - postIt.getWidth() >= bandAids[i].getX() + bandAids[i].getWidth()  &&
+          !postIt.getY() - postIt.getHeight() >= bandAids[i].getY() + bandAids[i].getHeight() &&
+          !postIt.getX() + postIt.getWidth()  <= bandAids[i].getX() + bandAids[i].getWidth() &&
+          !postIt.getX() + postIt.getHeight() <= bandAids[i].getY() - bandAids[i].getHeight() )
+          collided = true;
+    }
+    return collided;
 }
 
 function draw(images){
@@ -86,6 +97,12 @@ function draw(images){
     img.on('mouseout', function(){
       document.body.style.cursor = 'default';
     });
+    img.on('dragend', function(evt){
+      //colisao
+      console.log(evt.x, evt.y);
+      console.log(collided(this));
+    });
+
     layer.add(img);
     //transicao
     img.transitionTo({
@@ -109,7 +126,7 @@ var sources = {
   sociedade: 'img/sociedade.png',
 };
 
-bandAids();
+generateBandAids();
 loadImages(sources, function(images) {
   draw(images);
 });
