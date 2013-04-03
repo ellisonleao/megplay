@@ -184,11 +184,11 @@ body.index{
   display: block;
   width: 0;
   height: 0;
-  top: -37px;
+  top: -31px;
   bottom: auto;
   left: auto;
   right: 23px;
-  border-width: 0 37px 37px;
+  border-width: 0 31px 31px;
   border-color: rgb(226, 166, 37) transparent;
 }
 
@@ -200,7 +200,7 @@ body.index{
   display: block;
   width: 0;
   height: 0;
-  top: -28px;
+  top: -20px;
   bottom: auto;
   left: auto;
   right: 40px;
