@@ -35,22 +35,22 @@ body.index{
   -webkit-user-select:  none;
   -moz-user-select:     none;
   user-select:      none;
-  
-  
+
+
 /* layout */
   padding:        .5em .6em .4em .6em;
   margin:         .5em;
   display:        inline-block;
   position:         relative;
-  
+
   -webkit-border-radius:  8px;
   -moz-border-radius:   8px;
   border-radius:  8px;
-  
+
 /* effects */
   border-top:     1px solid rgba(255,255,255,0.8);
   border-bottom:    1px solid rgba(0,0,0,0.1);
-  
+
   background-image:   -webkit-gradient(radial, 50% 0, 100, 50% 0, 0, from( rgba(255,255,255,0) ), to( rgba(255,255,255,0.7) ));
   background-image:   -moz-radial-gradient(top, ellipse cover, rgba(255,255,255,0.7) 0%, rgba(255,255,255,0) 100%);
   background-image:   gradient(radial, 50% 0, 100, 50% 0, 0, from( rgba(255,255,255,0) ), to( rgba(255,255,255,0.7) ));
@@ -58,18 +58,18 @@ body.index{
   -webkit-transition: background .2s ease-in-out;
   -moz-transition:  background .2s ease-in-out;
   transition:     background .2s ease-in-out;
-  
+
 /* color */
   color:        hsl(0, 0%, 40%) !important;
   background-color:   hsl(0, 0%, 75%);
-  
-  -webkit-box-shadow: inset rgba(255,254,255,0.6) 0 0.3em .3em, inset rgba(0,0,0,0.15) 0 -0.1em .3em, /* inner shadow */ 
+
+  -webkit-box-shadow: inset rgba(255,254,255,0.6) 0 0.3em .3em, inset rgba(0,0,0,0.15) 0 -0.1em .3em, /* inner shadow */
             hsl(0, 0%, 60%) 0 .1em 3px, hsl(0, 0%, 45%) 0 .3em 1px, /* color border */
             rgba(0,0,0,0.2) 0 .5em 5px; /* drop shadow */
-  -moz-box-shadow:  inset rgba(255,254,255,0.6) 0 0.3em .3em, inset rgba(0,0,0,0.15) 0 -0.1em .3em, /* inner shadow */ 
+  -moz-box-shadow:  inset rgba(255,254,255,0.6) 0 0.3em .3em, inset rgba(0,0,0,0.15) 0 -0.1em .3em, /* inner shadow */
             hsl(0, 0%, 60%) 0 .1em 3px, hsl(0, 0%, 45%) 0 .3em 1px, /* color border */
             rgba(0,0,0,0.2) 0 .5em 5px; /* drop shadow */
-  box-shadow:     inset rgba(255,254,255,0.6) 0 0.3em .3em, inset rgba(0,0,0,0.15) 0 -0.1em .3em, /* inner shadow */ 
+  box-shadow:     inset rgba(255,254,255,0.6) 0 0.3em .3em, inset rgba(0,0,0,0.15) 0 -0.1em .3em, /* inner shadow */
             hsl(0, 0%, 60%) 0 .1em 3px, hsl(0, 0%, 45%) 0 .3em 1px, /* color border */
             rgba(0,0,0,0.2) 0 .5em 5px; /* drop shadow */
 }
@@ -95,13 +95,13 @@ body.index{
   background-image:   -moz-gradient(radial, 50% 0, 100, 50% 0, 0, from( rgba(255,255,255,0) ), to( rgba(255,255,255,0) )), url(noise.png);
   background-image:   gradient(radial, 50% 0, 100, 50% 0, 0, from( rgba(255,255,255,0) ), to( rgba(255,255,255,0) )), url(noise.png);
 
-  -webkit-box-shadow: inset rgba(255,255,255,0.6) 0 0.3em .3em, inset rgba(0,0,0,0.2) 0 -0.1em .3em, /* inner shadow */ 
+  -webkit-box-shadow: inset rgba(255,255,255,0.6) 0 0.3em .3em, inset rgba(0,0,0,0.2) 0 -0.1em .3em, /* inner shadow */
               rgba(0,0,0,0.4) 0 .1em 1px, /* border */
               rgba(0,0,0,0.2) 0 .2em 6px; /* drop shadow */
-  -moz-box-shadow:  inset rgba(255,255,255,0.6) 0 0.3em .3em, inset rgba(0,0,0,0.2) 0 -0.1em .3em, /* inner shadow */ 
+  -moz-box-shadow:  inset rgba(255,255,255,0.6) 0 0.3em .3em, inset rgba(0,0,0,0.2) 0 -0.1em .3em, /* inner shadow */
               rgba(0,0,0,0.4) 0 .1em 1px, /* border */
               rgba(0,0,0,0.2) 0 .2em 6px; /* drop shadow */
-  box-shadow:     inset rgba(255,255,255,0.6) 0 0.3em .3em, inset rgba(0,0,0,0.2) 0 -0.1em .3em, /* inner shadow */ 
+  box-shadow:     inset rgba(255,255,255,0.6) 0 0.3em .3em, inset rgba(0,0,0,0.2) 0 -0.1em .3em, /* inner shadow */
               rgba(0,0,0,0.4) 0 .1em 1px, /* border */
               rgba(0,0,0,0.2) 0 .2em 6px; /* drop shadow */
 
@@ -125,13 +125,13 @@ body.index{
   background-image:   none;
   border-top:     none;
 
-  -webkit-box-shadow: inset rgba(255,254,255,0.4) 0 0.3em .3em, inset rgba(0,0,0,0.1) 0 -0.1em .3em, /* inner shadow */ 
+  -webkit-box-shadow: inset rgba(255,254,255,0.4) 0 0.3em .3em, inset rgba(0,0,0,0.1) 0 -0.1em .3em, /* inner shadow */
               rgba(0,0,0,0.3) 0 .1em 1px, /* border */
               rgba(0,0,0,0.2) 0 .2em 6px; /* drop shadow */
-  -moz-box-shadow:  inset rgba(255,254,255,0.4) 0 0.3em .3em, inset rgba(0,0,0,0.1) 0 -0.1em .3em, /* inner shadow */ 
+  -moz-box-shadow:  inset rgba(255,254,255,0.4) 0 0.3em .3em, inset rgba(0,0,0,0.1) 0 -0.1em .3em, /* inner shadow */
               rgba(0,0,0,0.3) 0 .1em 1px, /* border */
               rgba(0,0,0,0.2) 0 .2em 6px; /* drop shadow */
-  box-shadow:     inset rgba(255,254,255,0.4) 0 0.3em .3em, inset rgba(0,0,0,0.1) 0 -0.1em .3em, /* inner shadow */ 
+  box-shadow:     inset rgba(255,254,255,0.4) 0 0.3em .3em, inset rgba(0,0,0,0.1) 0 -0.1em .3em, /* inner shadow */
               rgba(0,0,0,0.3) 0 .1em 1px, /* border */
               rgba(0,0,0,0.2) 0 .2em 6px; /* drop shadow */
 
@@ -146,13 +146,13 @@ body.index{
   width: 1024px;
   background: #fff;
   margin: 0 auto;
-  -webkit-box-shadow: inset rgba(255,254,255,0.4) 0 0.3em .3em, inset rgba(0,0,0,0.1) 0 -0.1em .3em, /* inner shadow */ 
+  -webkit-box-shadow: inset rgba(255,254,255,0.4) 0 0.3em .3em, inset rgba(0,0,0,0.1) 0 -0.1em .3em, /* inner shadow */
               rgba(0,0,0,0.3) 0 .1em 1px, /* border */
               rgba(0,0,0,0.2) 0 .2em 6px; /* drop shadow */
-  -moz-box-shadow:  inset rgba(255,254,255,0.4) 0 0.3em .3em, inset rgba(0,0,0,0.1) 0 -0.1em .3em, /* inner shadow */ 
+  -moz-box-shadow:  inset rgba(255,254,255,0.4) 0 0.3em .3em, inset rgba(0,0,0,0.1) 0 -0.1em .3em, /* inner shadow */
               rgba(0,0,0,0.3) 0 .1em 1px, /* border */
               rgba(0,0,0,0.2) 0 .2em 6px; /* drop shadow */
-  box-shadow:     inset rgba(255,254,255,0.4) 0 0.3em .3em, inset rgba(0,0,0,0.1) 0 -0.1em .3em, /* inner shadow */ 
+  box-shadow:     inset rgba(255,254,255,0.4) 0 0.3em .3em, inset rgba(0,0,0,0.1) 0 -0.1em .3em, /* inner shadow */
               rgba(0,0,0,0.3) 0 .1em 1px, /* border */
               rgba(0,0,0,0.2) 0 .2em 6px; /* drop shadow */
 
@@ -163,6 +163,7 @@ body.index{
   display: none;
   position: relative;
   margin: 0 auto;
+  top: 30px;
   width: 400px;
   height: 200px;
   text-align: center;
@@ -177,26 +178,33 @@ body.index{
 }
 
 #info-box:before {
-  content: ' ';
+  content: "";
   position: absolute;
+  border-style: solid;
+  display: block;
   width: 0;
   height: 0;
-  left: 30px;
-  top: 200px;
-  border: 25px solid;
-  border-color: rgb(226, 166, 37) transparent transparent rgb(226, 166, 37);
+  top: -37px;
+  bottom: auto;
+  left: auto;
+  right: 23px;
+  border-width: 0 37px 37px;
+  border-color: rgb(226, 166, 37) transparent;
 }
 
 #info-box:after {
-  content: ' ';
+  content: "";
   position: absolute;
+  border-style: solid;
+  border-color: #FFF transparent;
+  display: block;
   width: 0;
   height: 0;
-  left: 38px;
-  top: 200px;
-  border: 15px solid;
-  border-color: #fff transparent transparent #fff;
-}
+  top: -28px;
+  bottom: auto;
+  left: auto;
+  right: 40px;
+  border-width: 0 20px 20px;}
 
 
 #info-box h2{
