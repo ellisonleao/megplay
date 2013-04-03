@@ -1,7 +1,7 @@
 // core file
 var stage = new Kinetic.Stage({
   container: 'container',
-  width: window.innerWidth,
+  width: 1024,
   height: 400 
 });
 var layer = new Kinetic.Layer();  
@@ -10,22 +10,37 @@ var bandAids = [];
 Number.prototype.clamp = function(min, max) {
   return Math.min(Math.max(this, min), max);
 };
+Object.size = function(obj) {
+    var size = 0, key;
+    for (key in obj) {
+        if (obj.hasOwnProperty(key)) size++;
+    }
+    return size;
+};
 function loadImages(sources, callback) {
   var images = {};
   var loadedImages = 0;
   var numImages = 0;
+  var i = 0; 
   // get num of sources
-  for(var src in sources) {
+  for(i = 0; i < Object.size(sources); i++) {
     numImages++;
   }
-  for(var src in sources) {
-    images[src] = new Image();
-    images[src].onload = function() {
+  var keys = Object.keys(sources);
+  var length = keys.length;
+  for(i = 0; i < length; i++) {
+    var key = keys[i];
+    var obj = sources[key];
+    console.log(obj);
+    images[key] = new Image();
+    images[key].onload = function() {
       if(++loadedImages >= numImages) {
         callback(images);
       }
     };
-    images[src].src = sources[src];
+    images[key].src = obj.src;
+    images[key].text = obj.text;
+    images[key].title = obj.title;
   }
 }
 
@@ -38,7 +53,8 @@ function generateBandAids(){
   img.onload = function(){
     for (var i = 0; i < quantity; i++){
       posX = (quantity * i * img.width) + padding; 
-      posX = posX.clamp(100, stage.getWidth() - 140);
+      posX = posX % stage.getWidth() - img.width;
+      console.log(posX);
       var bandAid = new Kinetic.Image({
         x: posX,
         y: 10,
@@ -57,18 +73,23 @@ function generateBandAids(){
 
 
 function collided(postIt) {
-    var bLength = bandAids.length;
-    var collided = false;
-    for (var i = 0 ; i < bLength; i++){
-      if (!postIt.getX() - postIt.getWidth() >= bandAids[i].getX() + bandAids[i].getWidth()  &&
-          !postIt.getY() - postIt.getHeight() >= bandAids[i].getY() + bandAids[i].getHeight() &&
-          !postIt.getX() + postIt.getWidth()  <= bandAids[i].getX() + bandAids[i].getWidth() &&
-          !postIt.getX() + postIt.getHeight() <= bandAids[i].getY() - bandAids[i].getHeight() ){
-          collided = true;
-          break;
-      }
+  var bLength = bandAids.length;
+  var collided = false;
+  var top = postIt.getX();
+  var right = postIt.getX() + postIt.getWidth();
+  var bottomLeft = postIt.getY() + postIt.getHeight();
+  var bottomRight = bottomLeft + postIt.getWidth();
+   
+  for (var i = 0 ; i < bLength; i++){
+    if (!bandAids[i].getX() > right || 
+        !bandAids[i].getX() + bandAids[i].getWidth() < top ||  
+        !bandAids[i].getY() > bottomLeft || 
+        !bandAids[i].getY() + bandAids[i].getHeight() < postIt.getY()) { 
+      collided = true;
+      break;
     }
-    return collided;
+  }
+  return collided;
 }
 
 function draw(images){
@@ -104,6 +125,16 @@ function draw(images){
       console.log(evt.x, evt.y);
       console.log(collided(this));
     });
+  
+    img.on('click', function(evt){
+      var image = this.getImage();
+      var div = $('#info-box');
+      div.fadeOut('fast');
+      div.children('h2').html(image.title);
+      div.children('p').html(image.text);
+      div.fadeIn();
+    });
+
 
     layer.add(img);
     //transicao
@@ -118,14 +149,46 @@ function draw(images){
 }
 
 var sources = {
-  clientes: 'img/clientes.png',
-  estrategiasplanos: 'img/estrategiasplanos.png',
-  informacaoconhecimento: 'img/informacaoconhecimento.png',
-  lideranca: 'img/lideranca.png',
-  pessoas: 'img/pessoas.png',
-  processos: 'img/processos.png',
-  resultados: 'img/resultados.png',
-  sociedade: 'img/sociedade.png',
+  clientes: { 
+    src: 'img/clientes.png',
+    title: 'Clientes',
+    text: 'Clientes aqui'
+  },
+  estrategiasplanos: { 
+    src: 'img/estrategiasplanos.png', 
+    title: 'Estratégias e Planos',
+    text: 'Aqui as estratégias e planos'
+  },
+  informacaoconhecimento: { 
+    src: 'img/informacaoconhecimento.png', 
+    title: 'Informação e Conhecimento',
+    text: 'Aqui informação e conhecimento',
+  },
+  lideranca: { 
+    src: 'img/lideranca.png' ,
+    title: 'Liderança',
+    text: 'Liderança aqui'
+  },
+  pessoas: {
+    src: 'img/pessoas.png',
+    title: 'Pessoas',
+    text: 'Pessoas aqui'
+  },
+  processos: { 
+    src:'img/processos.png',
+    title: 'Processos',
+    text: 'Processos aqui',
+  },
+  resultados: { 
+    src: 'img/resultados.png',
+    title: 'Resultados',
+    text: 'Resultados aqui'
+  },
+  sociedade: { 
+    src: 'img/sociedade.png',
+    title: 'Sociedade',
+    text: 'Sociedade aqui'
+  }
 };
 
 generateBandAids();

@@ -143,6 +143,7 @@ body.index{
 
 #container{
   border: 6px solid #444;
+  width: 1024px;
   background: #fff;
   margin: 0 auto;
   -webkit-box-shadow: inset rgba(255,254,255,0.4) 0 0.3em .3em, inset rgba(0,0,0,0.1) 0 -0.1em .3em, /* inner shadow */ 
@@ -156,4 +157,51 @@ body.index{
               rgba(0,0,0,0.2) 0 .2em 6px; /* drop shadow */
 
 
+}
+
+#info-box{
+  display: none;
+  position: relative;
+  margin: 0 auto;
+  width: 400px;
+  height: 200px;
+  text-align: center;
+  background-color: #fff;
+  border: 8px solid rgb(226, 166, 37);
+  -webkit-border-radius: 30px;
+  -moz-border-radius: 30px;
+  border-radius: 30px;
+  -webkit-box-shadow: 2px 2px 4px rgb(226, 166, 37);
+  -moz-box-shadow: 2px 2px 4px rgb(226, 166, 37);
+  box-shadow: 2px 2px 4px rgb(226, 166, 37);
+}
+
+#info-box:before {
+  content: ' ';
+  position: absolute;
+  width: 0;
+  height: 0;
+  left: 30px;
+  top: 200px;
+  border: 25px solid;
+  border-color: rgb(226, 166, 37) transparent transparent rgb(226, 166, 37);
+}
+
+#info-box:after {
+  content: ' ';
+  position: absolute;
+  width: 0;
+  height: 0;
+  left: 38px;
+  top: 200px;
+  border: 15px solid;
+  border-color: #fff transparent transparent #fff;
+}
+
+
+#info-box h2{
+  font-family: 'Sacramento';
+  font-size: 35px;
+  text-shadow: 0 0 10px rgb(204, 152, 41);
+  color: rgb(235, 134, 25);
 }
