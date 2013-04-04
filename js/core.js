@@ -6,6 +6,11 @@ var stage = new Kinetic.Stage({
 });
 var layer = new Kinetic.Layer();  
 var bandAids = [];
+var bandAidsAux = [];
+var postIts = [];
+// ordem dos postIts do usuario
+var userOrder = [];
+var rightOrder = ["7", "2", "0", "4", "1", "6", "3", "5"];
 /* TODO: Separar as funcoes em outro arquivo */
 Number.prototype.clamp = function(min, max) {
   return Math.min(Math.max(this, min), max);
@@ -17,6 +22,13 @@ Object.size = function(obj) {
     }
     return size;
 };
+// Array Remove - By John Resig (MIT Licensed)
+Array.prototype.remove = function(from, to) {
+  var rest = this.slice((to || from) + 1 || this.length);
+  this.length = from < 0 ? this.length + from : from;
+  return this.push.apply(this, rest);
+};
+
 function loadImages(sources, callback) {
   var images = {};
   var loadedImages = 0;
@@ -31,7 +43,6 @@ function loadImages(sources, callback) {
   for(i = 0; i < length; i++) {
     var key = keys[i];
     var obj = sources[key];
-    console.log(obj);
     images[key] = new Image();
     images[key].onload = function() {
       if(++loadedImages >= numImages) {
@@ -41,29 +52,32 @@ function loadImages(sources, callback) {
     images[key].src = obj.src;
     images[key].text = obj.text;
     images[key].title = obj.title;
+    images[key].id = i;
   }
 }
 
 function generateBandAids(){
   var quantity = 8;
-  var padding = 40;
+  var padding_left = 200;
+  var padding_top = 150;
   var img = new Image();
 
   img.src = 'img/bandaid.png';
   img.onload = function(){
+    var posY = 60;
     for (var i = 0; i < quantity; i++){
-      posX = (quantity * i * img.width) + padding; 
-      posX = posX % stage.getWidth() - img.width;
-      console.log(posX);
+      var posX;  
+      posX = (i % 4) * img.width * quantity + padding_left;
+      if ( i % 4 == 0 && i > 0 ){
+        posY += img.height + padding_top;
+      }
       var bandAid = new Kinetic.Image({
         x: posX,
-        y: 10,
+        y: posY,
         image: img,
         draggable: false
       });
-      bandAid.createImageHitRegion(function(){
-        console.log('region created');
-      })
+      bandAid.createImageHitRegion(function(){})
       layer.add(bandAid);
       stage.add(layer);
       bandAids.push(bandAid);
@@ -72,24 +86,49 @@ function generateBandAids(){
 }
 
 
-function collided(postIt) {
+function checkCollision(postIt) {
   var bLength = bandAids.length;
-  var collided = false;
-  var top = postIt.getX();
-  var right = postIt.getX() + postIt.getWidth();
-  var bottomLeft = postIt.getY() + postIt.getHeight();
-  var bottomRight = bottomLeft + postIt.getWidth();
-   
+  //colisao entre o bandaid e o postit 
   for (var i = 0 ; i < bLength; i++){
-    if (!bandAids[i].getX() > right || 
-        !bandAids[i].getX() + bandAids[i].getWidth() < top ||  
-        !bandAids[i].getY() > bottomLeft || 
-        !bandAids[i].getY() + bandAids[i].getHeight() < postIt.getY()) { 
-      collided = true;
-      break;
+    var rect2 = bandAids[i];
+    collided = !(rect2.getX() > postIt.getX() + postIt.getWidth() || 
+                 rect2.getX() + rect2.getWidth() < postIt.getX() || 
+                 rect2.getY() > postIt.getY() + postIt.getHeight() ||
+                 rect2.getY() + rect2.getHeight() < postIt.getY());
+    // se colidiu retorna a posicao do bandaid
+    // remove o bandaid da lista e tira o draggable do postit
+    if (collided) {
+      postIt.setDraggable(false);
+      userOrder.push(postIt.getImage().id);
+      bandAidsAux.push(bandAids[i]);
+      bandAids.remove(i); 
+      if (bandAids.length == 0){
+        //NAO EH a MAIS RAPIDA COMPARAÇÃO :(
+        if (userOrder.toString() == rightOrder.toString()){
+          alert('Parabéns, você acertou!');
+        }else{
+          alert('Tente Novamente');
+          //reinicia tudo
+          userOrder = [];
+          bandAids = bandAidsAux;
+          bandAidsAux = [];
+          for(var i = 0; i < postIts.length ; i++){
+            var postit = postIts[i];
+            postit.setDraggable(true);
+            postit.transitionTo({
+              x: Math.random() * stage.getWidth(),
+              y: stage.getHeight() - postit.getHeight() - 10,
+              duration: 1,
+              easing: 'ease-in-out' 
+            });
+          }
+        }
+      }
+      return true;
     }
+      
   }
-  return collided;
+  return false;
 }
 
 function draw(images){
@@ -111,9 +150,7 @@ function draw(images){
         }
       }
     });
-    img.createImageHitRegion(function(){
-      console.log('regiao da imagem criada');
-    })
+    img.createImageHitRegion(function(){})
     img.on('mouseover', function(){
       document.body.style.cursor = 'pointer';
     });
@@ -122,8 +159,7 @@ function draw(images){
     });
     img.on('dragend', function(evt){
       //colisao
-      console.log(evt.x, evt.y);
-      console.log(collided(this));
+      checkCollision(this);
     });
   
     img.on('click', function(evt){
@@ -134,8 +170,7 @@ function draw(images){
       div.children('p').html(image.text);
       div.fadeIn();
     });
-
-
+    postIts.push(img);
     layer.add(img);
     //transicao
     img.transitionTo({
