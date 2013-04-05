@@ -2,7 +2,7 @@
 var stage = new Kinetic.Stage({
   container: 'container',
   width: 1024,
-  height: 400 
+  height: 400
 });
 var layer = new Kinetic.Layer();  
 var bandAids = [];
