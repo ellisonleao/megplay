@@ -20,6 +20,22 @@ body.index{
   margin: 0;
 }
 
+#alert {
+  font-family: 'Sacramento';
+  width: 600px;
+  text-align:center;
+  margin:0 auto;
+}
+
+#alert p.success{
+  font-size: 40px;
+  color:'green';
+}
+
+#alert p.fail{
+  font-size: 40px;
+  color:'red';
+}
 
 .button {
 
