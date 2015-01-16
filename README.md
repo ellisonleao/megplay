@@ -1,4 +1,4 @@
 Jogo dos Critérios
 ==================
-Jogo criado para facilitar o treinamento dos avaliadores do SEBRAE
 
+Webapp utilizado para os treinadores do SEBRAE.
