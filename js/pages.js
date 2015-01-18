@@ -1,16 +1,28 @@
 (function () {
+    App.setDefaultTransition('fade');
     App.controller('intro', function (page) {
-        setTimeout(function() {
+        //setTimeout(function() {
             App.load('home', 'fade');
-        }, 5000);
+        //}, 5000);
     });
 
-    App.controller('test', function (page) {
-    // put stuff here
-    });
+    App.controller('questions', function (page, obj) {
+        var criterio = $(page).find('.criterio');
+        criterio.text(getCriterionDisplay(obj.criterio));
 
-    App.controller('page2', function (page) {
-    // put stuff here
+        function getCriterionDisplay(criterion) {
+            var criterions = {
+                'lideranca': 'Liderança',
+                'informacao-e-conhecimento': 'Informação e Conhecimento',
+                'estrategias-e-planos': 'Estratégias e Planos',
+                'pessoas': 'Pessoas',
+                'clientes': 'Clientes',
+                'processos': 'Processos',
+                'sociedade': 'Sociedade',
+                'resultados': 'Resultados'
+            };
+            return criterions[criterion];
+        }
     });
 
     App.load('intro', 'fade');

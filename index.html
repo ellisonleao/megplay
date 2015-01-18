@@ -11,35 +11,61 @@
     <body>
         <div class="app-page" data-page="intro">
             <div class="app-content">
-                <div class="intro-img">
-                    <img src="img/mec.png" />
-                    <br/>
-                    <p>Modelo de Excelência de Gestão</p>
-                    <span>Carregando..</span>
+                <div class="container">
+                    <h1>GEC</h1>
+                    <h2>Gestão de Excelência Competitiva</h2>
+                    <div class="intro-img">
+                        <img class="logo" src="img/mec.png" />
+                        <br/>
+                        <p>Modelo de Excelência de Gestão</p>
+                        <br/>
+                        <span><img src="img/loader.gif"></span>
+                    </div>
                 </div>
             </div>
         </div>
 
         <div class="app-page" data-page="home">
+            <div class="app-topbar blue">
+                <div class="app-title">Escolha um dos critérios</div>
+            </div>
             <div class="app-content">
-                <div class="app-section">
-                    <div class="app-button" data-target="page2">Go to Page 2</div>
+                <div class="criterios-container">
+                    <ul class="criterios">
+                        <li><div class="app-button blue" data-target="questions" data-target-args='{"criterio": "lideranca"}'>Liderança</div></li>
+                        <li><div class="app-button blue" data-target-args='{"criterio": "informacao-e-conhecimento"}' >Informação e Conhecimento</div></li>
+                        <li><div class="app-button blue small" data-target-args='{"criterio": "estrategias-e-planos"}'>Estratégias e Planos</div></li>
+                        <li><div class="app-button blue" data-target-args='{"criterio": "pessoas"}'>Pessoas</div></li>
+                        <li><div class="app-button blue" data-target-args='{"criterio": "clientes"}'>Clientes</div></li>
+                        <li><div class="app-button blue" data-target-args='{"criterio": "processos"}'>Processos</div></li>
+                        <li><div class="app-button blue" data-target-args='{"criterio": "sociedade"}'>Sociedade</div></li>
+                        <li><div class="app-button blue" data-target-args='{"criterio": "resultados"}'>Resultados</div></li>
+                    </ul>
                 </div>
             </div>
         </div>
 
-        <div class="app-page" data-page="page2">
+        <div class="app-page" data-page="questions">
             <div class="app-topbar">
                 <div class="app-button left" data-back data-autotitle></div>
-                <div class="app-title">Page 2</div>
+                <div class="app-title"></div>
             </div>
             <div class="app-content">
-                Page 2 is lonely
+                <p>Você escolheu o critério <span class="criterio"></span>. Qual dessas frases tem relação com esse critério?</p>
+                <br/>
+                <ul class="app-list">
+                    <li><div class="app-button">Frase 1</div></li>
+                    <li><div class="app-button">Frase 1</div></li>
+                    <li><div class="app-button">Frase 1</div></li>
+                    <li><div class="app-button">Frase 1</div></li>
+                    <li><div class="app-button">Frase 1</div></li>
+                </ul>
             </div>
         </div>
 
         <script src="lib/zepto.min.js"></script>
         <script src="lib/app.min.js"></script>
+        <script src="js/questions.js"></script>
         <script src="js/pages.js"></script>
     </body>
 </html>
