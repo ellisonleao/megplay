@@ -18,10 +18,6 @@
 	padding: 8px;
 }
 
-.criterios  ul {
-	float: left;
-}
-
 .criterios li {
 	text-align: center;
 	padding: 20px;
@@ -30,12 +26,17 @@
 	list-style-type: none;
 	background: #4486F0;
 	color: #fff;
-	float: left;
-	width: 31%;
 }
 
 .blue {
  	background: #4486F0
+}
+
+
+@media only screen and (max-device-width: 320px) {
+	.answers {
+		font-size: 10pt;
+	}
 }
 
 @media only screen and (max-device-width: 480px) {
