@@ -20,8 +20,11 @@
         while (i <= max) {
             // choose one aswer from a random criterion
             var criteria = keys[Math.floor(Math.random() * keys.length)];
-            answers.push(criterionsData[criteria][Math.floor(Math.random() * criterionsData[criteria].length)]);
-            i++;
+            var aAnswer = criterionsData[criteria][Math.floor(Math.random() * criterionsData[criteria].length)]
+            if (answers.indexOf(aAnswer) === -1) {
+                answers.push(aAnswer);
+                i++;
+            }
         }
         answers.push(rightAnswer);
 
