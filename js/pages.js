@@ -16,11 +16,15 @@
         // get one answer from each criteria to create the answers
         var max = 4;
         var keys = Object.keys(criterionsData);
+        // remove the current criteria key
+        var index = keys.indexOf(obj.criterio);
+        keys.splice(index, 1);
         var i = 0;
         while (i <= max) {
             // choose one aswer from a random criterion
             var criteria = keys[Math.floor(Math.random() * keys.length)];
             var aAnswer = criterionsData[criteria][Math.floor(Math.random() * criterionsData[criteria].length)]
+            // do not add same answer again
             if (answers.indexOf(aAnswer) === -1) {
                 answers.push(aAnswer);
                 i++;

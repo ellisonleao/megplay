@@ -28,14 +28,53 @@
 	margin-right: 10px;
 	margin-bottom: 10px;
 	list-style-type: none;
-	background: #4486F0;
+	font-size: 19pt;
 	color: #fff;
 }
 
-.blue {
- 	background: #4486F0
+.criterios li.red {
+	background-color: #DD4539;
 }
 
+.criterios li.orange {
+	background-color: #E82;
+}
+
+
+.criterios li.yellow {
+	background-color: #EC1;
+}
+
+
+.criterios li.dark-blue {
+	background-color: #345;
+}
+
+.criterios li.green {
+	background-color: #3C7;
+}
+
+.criterios li.blue {
+	background-color: #4486F0;
+}
+
+
+.criterios li.red {
+	background-color: #DD4539;
+}
+
+
+.criterios li.teal {
+	background-color: #2B9;
+}
+
+.criterios li.white {
+	background-color: #fff;
+}
+
+.criterios li > .small {
+	font-size: 14pt;
+}
 
 @media only screen and (max-device-width: 320px) {
 	.answers {
@@ -47,4 +86,10 @@
 	.intro-img .logo {
 		width: 70%;
 	}
+}
+
+/* overrides */
+.app-content .app-button {
+	text-overflow: none; !important
+	word-break: break-word;
 }
