@@ -81,7 +81,6 @@
                     title: 'Errado!',
                     text: 'Não foi dessa vez! Vamos tentar novamente?',
                     okButton: 'Tentar Novamente',
-                    cancelButton: 'Sair'
                 }, function (tryAgain) {
                     if (!tryAgain) {
                         App.load('home');
@@ -92,7 +91,6 @@
                     title: 'Correto!',
                     text: 'Parabéns! Você acertou',
                     okButton: 'Escolher outro critério',
-                    cancelButton: 'Sair'
                 }, function (option) {
                     if (option === 'ok') {
                         App.load('home');
