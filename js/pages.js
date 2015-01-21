@@ -2,9 +2,9 @@
     'use strict';
     App.setDefaultTransition('fade');
     App.controller('intro', function (page) {
-        //setTimeout(function() {
+        setTimeout(function() {
             App.load('home', 'fade');
-        //}, 5000);
+        }, 5000);
     });
 
     App.controller('questions', function (page, obj) {
