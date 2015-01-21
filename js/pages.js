@@ -11,12 +11,47 @@
         var criterio = $(page).find('.criterio');
         var title = $(page).find('.app-title');
         var questions = criterionsData[obj.criterio];
+        var rightAnswer = questions[Math.floor(Math.random() * questions.length)];
+        var answers = [];
+        // get one answer from each criteria to create the answers
+        var max = 4;
+        var keys = Object.keys(criterionsData);
+        var i = 0;
+        while (i <= max) {
+            // choose one aswer from a random criterion
+            var criteria = keys[Math.floor(Math.random() * keys.length)];
+            answers.push(criterionsData[criteria][Math.floor(Math.random() * criterionsData[criteria].length)]);
+            i++;
+        }
+        answers.push(rightAnswer);
+
+        // shuffle the array
+        answers = shuffle(answers);
+        var correctIndex = answers.indexOf(rightAnswer);
 
         var ul = $(page).find('ul');
-        questions.forEach(function(val, index){
-            console.log(val, index);
-            ul.append('<li><div class="app-button answers">'+val+'</div></li>');
+        answers.forEach(function(val, index){
+            ul.append('<li><div class="app-button answers" data-index="'+index+'">'+val+'</div></li>');
         });
+
+        function shuffle(array) {
+          var currentIndex = array.length, temporaryValue, randomIndex ;
+
+          // While there remain elements to shuffle...
+          while (0 !== currentIndex) {
+
+            // Pick a remaining element...
+            randomIndex = Math.floor(Math.random() * currentIndex);
+            currentIndex -= 1;
+
+            // And swap it with the current element.
+            temporaryValue = array[currentIndex];
+            array[currentIndex] = array[randomIndex];
+            array[randomIndex] = temporaryValue;
+          }
+
+          return array;
+        }
 
         function getCriterionDisplay(criterion) {
             var criterions = {
@@ -34,16 +69,29 @@
 
         function selectAnswer(answer) {
             var criterion = obj.criterio;
-            App.dialog({
-                title: 'Errado!',
-                text: 'Não foi dessa vez! Vamos tentar novamente?',
-                okButton: 'Tentar Novamente',
-                cancelButton: 'Sair'
-            }, function (tryAgain) {
-                if (!tryAgain) {
-                    App.load('home');
-                }
-            });
+            if (answer != correctIndex) {
+                App.dialog({
+                    title: 'Errado!',
+                    text: 'Não foi dessa vez! Vamos tentar novamente?',
+                    okButton: 'Tentar Novamente',
+                    cancelButton: 'Sair'
+                }, function (tryAgain) {
+                    if (!tryAgain) {
+                        App.load('home');
+                    }
+                });
+            } else {
+                App.dialog({
+                    title: 'Correto!',
+                    text: 'Parabéns! Você acertou',
+                    okButton: 'Escolher outro critério',
+                    cancelButton: 'Sair'
+                }, function (option) {
+                    if (option === 'ok') {
+                        App.load('home');
+                    }
+                });
+            }
         }
 
         criterio.text(getCriterionDisplay(obj.criterio));
@@ -53,7 +101,7 @@
         $(page)
             .find('.answers')
             .on('click', function() {
-                selectAnswer($(this).text);
+                selectAnswer($(this).attr('data-index'));
             });
 
 
