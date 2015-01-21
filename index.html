@@ -1,10 +1,18 @@
 <!DOCTYPE html>
 <html >
     <head>
-        <title>GEC - Gestão de Excelência Competitiva</title>
+        <title>MEGPLAY</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-title" content="MEGPLAY">
+        <meta name="mobile-web-app-capable" content="yes">
+        <link rel="icon" sizes="192x192" href="/img/icon-192x192.png">
+        <link rel="apple-touch-icon-precomposed" sizes="192x192" href="/img/icon-192x192.png">
+        <link rel="apple-touch-icon" sizes="192x192" href="/img/icon-192x192.png">
+        <link rel="manifest" href="manifest.json">
         <link rel="stylesheet" href="css/app.min.css">
+        <link rel="stylesheet" href="css/addtohomescreen.css">
         <link rel="stylesheet" href="css/styles.css">
     </head>
 
@@ -62,5 +70,12 @@
         <script src="lib/app.min.js"></script>
         <script src="js/questions.js"></script>
         <script src="js/pages.js"></script>
+        <script src="js/addtohomescreen.min.js"></script>
+        <script>
+            addToHomescreen({
+                detectHomescreen: true,
+                maxDisplayCount: 1
+            });
+        </script>
     </body>
 </html>
