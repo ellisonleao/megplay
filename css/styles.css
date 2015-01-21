@@ -89,7 +89,6 @@
 }
 
 /* overrides */
-.app-content .app-button {
-	text-overflow: none; !important
-	word-break: break-word;
+.app-topbar .small {
+	font-size: 13px !important;
 }

@@ -63,7 +63,7 @@
         function getCriterionDisplay(criterion) {
             var criterions = {
                 'lideranca': 'Liderança',
-                'informacao-e-conhecimento': 'Informação e Conhecimento',
+                'informacoes-e-conhecimento': 'Informações e Conhecimento',
                 'estrategias-e-planos': 'Estratégias e Planos',
                 'pessoas': 'Pessoas',
                 'clientes': 'Clientes',
@@ -101,6 +101,9 @@
 
         criterio.text(getCriterionDisplay(obj.criterio));
         title.text(getCriterionDisplay(obj.criterio));
+        if (obj.criterio === 'informacoes-e-conhecimento') {
+            title.addClass('small');
+        }
 
         // listener
         $(page)

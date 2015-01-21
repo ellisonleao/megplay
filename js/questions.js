@@ -6,7 +6,7 @@ var criterionsData = {
         'Aprendizagem Contínua',
         'Desempenho da empresa'
     ],
-    'informacao-e-conhecimento': [
+    'informacoes-e-conhecimento': [
         'Utilização de Tecnologia da Informação',
         'Decisão baseada em informações',
         'Segurança das informações',
