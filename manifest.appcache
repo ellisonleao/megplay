@@ -1,7 +1,16 @@
 CACHE MANIFEST
 CACHE:
 index.html
-img/*
-js/*
-lib/*
-css/*
+img/icon-152x152.png
+img/icon-16x16.png
+img/icon-192x192.png
+img/mec.png
+img/loader.gif
+js/addtohomescreen.min.js
+js/pages.js
+js/questions.js
+lib/app.min.js
+lib/zepto.min.js
+css/addtohomescreen.css
+css/app.min.css
+css/styles.css
