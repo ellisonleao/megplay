@@ -37,7 +37,7 @@ var criterionsData = {
     'processos': [
         'Monitorar procedimentos',
         'Padronização de procedimentos',
-        'Constante implementação de inovações',
+        'Fluxograma',
         'Controle e avaliação de fornecedores',
         'Controle financeiro'
     ],
